@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Signup Page</title>
+    <meta charset="utf-8" />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+    <link rel="stylesheet" href="../static/style.css" />
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js"
+      integrity="sha512-pumBsjNRGGqkPzKHndZMaAG+bir374sORyzM3uulLV14lN5LyykqNk8eEeUlUkB3U0M4FApyaHraT65ihJhDpQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <script src="../static/Src/js/signup.js"></script>
+  </head>
+  <body>
+    <div class="container">
+      <div style="display: block">
+        <img
+          class="rounded mx-auto d-block"
+          src="./static/Src/Assets/Clippy.webp"
+          alt="lippy"
+          style="height: 20vh"
+        />
+      </div>
+    </div>
+    <div class="container mt-5">
+      <div class="row">
+        <div class="col-md-6 mx-auto">
+          <div class="window-out">
+            <div class="card-header">
+              <h4 class="card-title">Sign Up</h4>
+            </div>
+            <div class="card-body">
+              <form id="signup-form">
+                <div class="form-group">
+                  <label for="email"><u>E</u>-mail:</label>
+                  <input
+                    type="email"
+                    class="form-control"
+                    id="email"
+                    name="email"
+                    placeholder="E-mail"
+                    required
+                  />
+                  <div
+                    id="email-error"
+                    class="text-danger"
+                    style="visibility: hidden"
+                  >
+                    .
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="username"><u>U</u>ser name:</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="username"
+                    name="username"
+                    placeholder="User name"
+                    required
+                    maxlength="11"
+                  />
+                  <div
+                    id="username-error"
+                    class="text-danger"
+                    style="visibility: hidden"
+                  >
+                    .
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="password"><u>P</u>assword:</label>
+                  <input
+                    type="password"
+                    class="form-control"
+                    id="password"
+                    name="password"
+                    placeholder="Password"
+                    required
+                  />
+                  <div
+                    id="password-error"
+                    class="text-danger"
+                    style="visibility: hidden"
+                  >
+                    .
+                  </div>
+                </div>
+                <div class="row ml-2">
+                  <button id="signup-btn" class="btn">Sign up</button>
+                  <button
+                    onclick="window.location.href='/login'"
+                    type="button"
+                    class="btn ml-1"
+                  >
+                    Login
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

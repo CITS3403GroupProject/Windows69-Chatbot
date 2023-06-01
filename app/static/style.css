@@ -1,0 +1,478 @@
+/* Background color */
+body {
+  background: #008080;
+}
+
+/* Custom Win95-style font */
+@font-face {
+  font-family: "MS-Sans-Serif";
+  src: url("./Src/Assets/ms_sans_serif.woff");
+}
+
+/* Custom Win95 cursor */
+* {
+  font-family: "MS-Sans-Serif";
+  cursor: url("./Src/Assets/ArrowCursor.webp"), auto;
+}
+
+/* Custom Win95 text cursor */
+input {
+  cursor: url("./Src/Assets/TextCursor.webp"), auto;
+}
+
+/* Custom Win95 clickable link cursor */
+a:hover,
+.btn:hover {
+  cursor: url("./Src/Assets/LinkCursor.webp"), pointer;
+}
+
+/* Make text large and white */
+.card-title {
+  color: #fdffff;
+  font-size: large;
+}
+
+/* Add 5px of padding */
+.div-padding {
+  padding: 5px;
+}
+
+/* Title bar */
+.card-header {
+  padding: 10px 5px 5px 10px;
+  background: linear-gradient(45deg, #020024 0%, #010081 23%, #00d4ff 100%);
+  justify-content: space-between;
+  display: flex;
+  align-items: center;
+  border-radius: 0;
+  width: 100%;
+  color: #fdffff;
+  letter-spacing: 0;
+}
+
+/* Button not pressed*/
+.btn {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 5px 16px;
+  border-radius: 0;
+  background: #c3c3c3;
+  box-shadow: inset -1px -1px 0px #000000, inset 1px 1px 0px #fdffff,
+    inset -2px -2px 0px #818181, inset 2px 2px 0px #c3c3c3 !important;
+  transition: transform 0.01s;
+  margin: 5px 0px;
+}
+
+/* Left-align a button*/
+.btn-align-left {
+  justify-content: left !important;
+  padding-left: 15px !important;
+}
+
+/* For full width buttons with icons*/
+.btn-wide {
+  padding: 5px 3px 5px 0px !important;
+  width: 100%;
+}
+
+.btn-toggle-app {
+  width: 15%;
+  min-width: 220px;
+  max-width: 175px;
+  padding: 5px 5px !important;
+  margin: 0px;
+}
+
+/* Button pressed*/
+.btn:active {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  border-radius: 0;
+  background: #c3c3c3;
+  box-shadow: inset -1px -1px 0px #fdffff, inset 1px 1px 0px #000000,
+    inset -2px -2px 0px #c3c3c3, inset 2px 2px 0px #818181 !important;
+  transform: scale(0.99) translate(-1px, 1px);
+}
+
+/* Text only*/
+.btn-invis {
+  width: 100%;
+  background: none !important;
+  border: none !important;
+  box-shadow: none !important;
+  outline: none !important;
+  text-align: left;
+}
+
+.btn-user {
+  width: 100%;
+  text-align: center;
+  background: none;
+  border: none;
+}
+
+.btn-user:hover {
+  background-color: #aaaaaa;
+}
+
+.btn-xs {
+  width: 25px;
+  height: 25px;
+  font-size: 18px;
+  border-radius: 0;
+
+  justify-content: center;
+  align-items: center;
+  line-height: 1;
+
+  background: #c3c3c3;
+  box-shadow: inset -1px -1px 0px #000000, inset 1px 1px 0px #fdffff,
+    inset -2px -2px 0px #818181, inset 2px 2px 0px #c3c3c3 !important;
+  border: none !important;
+
+  transition: transform 0.01s;
+  margin: 5px 0px;
+}
+
+.btn-xs:active {
+  justify-content: center;
+  align-items: center;
+  line-height: 1;
+  border-radius: 0;
+
+  background: #c3c3c3;
+  box-shadow: inset -1px -1px 0px #fdffff, inset 1px 1px 0px #000000,
+    inset -2px -2px 0px #c3c3c3, inset 2px 2px 0px #818181 !important;
+
+  transform: scale(0.99) translate(-1px, 1px);
+}
+
+/* Form input styling */
+.form-control {
+  height: 40px;
+  font-size: 16px;
+  font-family: "MS-Sans-Serif";
+  background: #fdffff;
+  box-shadow: inset -1px -1px 0px #fdffff, inset 1px 1px 0px #818181,
+    inset -2px -2px 0px #c3c3c3, inset 2px 2px 0px #000000 !important;
+  border-radius: 0;
+  margin: 0px;
+}
+
+/* Window indented*/
+.window-in {
+  background: #fdffff;
+  box-shadow: inset -1px -1px 0px #fdffff, inset 1px 1px 0px #000000,
+    inset -2px -2px 0px #c3c3c3, inset 2px 2px 0px #818181;
+  padding: 5px;
+  border-radius: 0;
+}
+
+.window-in-grey {
+  background: #c3c3c3;
+  box-shadow: inset -1px -1px 0px #fdffff, inset 1px 1px 0px #000000,
+    inset -2px -2px 0px #c3c3c3, inset 2px 2px 0px #818181;
+  padding: 5px;
+  border-radius: 0;
+}
+
+/* Window protruding*/
+.window-out {
+  background: #c3c3c3;
+  box-shadow: inset -1px -1px 0px #000000, inset 1px 1px 0px #fdffff,
+    inset -2px -2px 0px #818181, inset 2px 2px 0px #c3c3c3;
+  padding: 5px;
+  border-radius: 0;
+}
+
+/* Removes box shadows */
+.window-none {
+  box-shadow: none;
+  padding: 5px;
+}
+
+/* Horizontal visual divider */
+.divider-horizontal {
+  box-shadow: inset -1px -1px 0px #fdffff, inset 2px 2px 0px #818181;
+  width: 100%;
+  height: 2.5px;
+  margin: 10px 0px 5px;
+}
+
+/* Vertical visual divider */
+.divider-vertical {
+  box-shadow: inset -1px -1px 0px #fdffff, inset 2px 2px 0px #818181;
+  width: 2.5px;
+  height: 46px;
+  margin: 0 5px;
+}
+
+/* For img icons */
+.icon {
+  height: 32px;
+  width: 32px;
+  padding: 5px 7px 5px 5px;
+}
+
+/* Set global font */
+* {
+  font-family: "MS-Sans-Serif";
+}
+
+.minimize-button {
+  float: left;
+}
+
+.close-button,
+.minimize-button,
+#toggle-button {
+  width: 25px;
+  height: 25px;
+  font-size: 18px;
+  line-height: 1;
+  text-align: center;
+  cursor: pointer;
+  float: left;
+}
+
+.APP-button {
+  width: 15%;
+  float: right;
+}
+
+.header h5 {
+  display: inline;
+  margin-right: 10px;
+}
+
+.popup,
+.addbotpopup,
+.addchannelpopup,
+.addUserpopclass,
+.seeusersclass , .Instructions {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 5px;
+  background: #c3c3c3;
+  box-shadow: inset -1px -1px 0px #000000, inset 1px 1px 0px #fdffff,
+    inset -2px -2px 0px #818181, inset 2px 2px 0px #c3c3c3 !important;
+  transition: transform 0.01s;
+  z-index: 9999;
+}
+
+.logout-popup {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  position: fixed;
+  width: 200px;
+  height: 280px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 5px;
+  background: #c3c3c3;
+  box-shadow: inset -1px -1px 0px #000000, inset 1px 1px 0px #fdffff,
+    inset -2px -2px 0px #818181, inset 2px 2px 0px #c3c3c3 !important;
+  transition: transform 0.01s;
+  z-index: 9999;
+}
+
+.clippypop {
+  max-width: 100%;
+  height: auto;
+}
+
+.overlay-class {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  z-index: 9998;
+}
+
+.backgroundImage {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.logo_wallpaper img {
+  max-width: 90%; /* Adjust as needed */
+  max-height: 90vh; /* Adjust as needed */
+  resize: both;
+  overflow: auto;
+}
+
+#left-container {
+  width: 0px;
+  transition: width 0.3s;
+}
+
+#right-container {
+  flex: 1;
+}
+
+#scrollable-window {
+  width: 170px;
+  height: 320px;
+  overflow: auto;
+}
+
+.history-class {
+  width: 100%;
+  height: 550px;
+  background: #fdffff;
+}
+
+.channel_button:hover {
+  background: #eeeeee;
+}
+
+.backgroundContainer {
+  position: fixed;
+  justify-content: center;
+  align-items: center;
+  height: 99vh;
+  width: 99vw;
+  z-index: -9999;
+}
+
+.desktop {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+
+.desktop img {
+  position: relative;
+}
+
+/* Start Menu Popup */
+.start-menu {
+  position: absolute;
+  bottom: 95%;
+  left: 2px;
+  width: 20vw;
+  min-width: 250px;
+
+  display: none;
+}
+
+.hourglass {
+  height: 200px;
+  width: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#Main {
+  position: absolute;
+  z-index: 9;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+}
+
+#header {
+  padding: 10px;
+  z-index: 10;
+}
+
+.popupscrollable-div {
+  width: 300px;
+  height: 200px;
+  overflow: auto;
+  margin: 0px;
+}
+
+.search {
+  display: flex;
+  align-items: center;
+}
+
+.search button {
+  display: flex;
+  align-items: center;
+  height: 45px;
+  width: 15%;
+}
+
+.search input-field {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 5px;
+}
+
+#search_results {
+  justify-content: left;
+  align-items: left;
+  text-align: left;
+}
+.add-User{
+  background-color: #008080;
+  color: white;
+}
+
+.sender {
+  font-size: 1em;
+  font-weight: bold;
+  color: #333333;
+}
+
+.timestamp {
+  font-size: 1em;
+  font-weight: bold;
+  color: #333333;
+}
+
+.msg_content {
+  font-size: 1em;
+  color: #333333;
+}
+
+.search input-field {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 5px;
+}
+/* Scrollbar */
+/* width */
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+
+::-webkit-scrollbar-track {
+  background: none;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #818181;
+}
+
+.Instructions ul {
+  list-style-type: none;
+}

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Log in Page</title>
+    <!-- Include Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    />
+
+    <link rel="stylesheet" href="../static/style.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js"
+      integrity="sha512-pumBsjNRGGqkPzKHndZMaAG+bir374sORyzM3uulLV14lN5LyykqNk8eEeUlUkB3U0M4FApyaHraT65ihJhDpQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <script src="../static/Src/js/login.js"></script>
+  </head>
+  <body>
+    <div class="container mt-5">
+      <div style="display: block">
+        <img
+          class="rounded mx-auto d-block"
+          src="./static/Src/Assets/Logo.webp"
+          alt="Windows Chat-Bot 69"
+          style="max-width: 420px; width: 40%; height: auto"
+        />
+      </div>
+    </div>
+
+    <div class="container mt-5">
+      <div class="row">
+        <div class="col-md-6 mx-auto">
+          <div class="window-out">
+            <div class="card-header">
+              <h4 class="card-title">Log in</h4>
+            </div>
+            <div class="card-body">
+              <form id="login-form">
+                <div class="form-group">
+                  <label id="username"><u>E</u>-mail:</label>
+                  <input
+                    type="email"
+                    class="form-control"
+                    id="email"
+                    name="email"
+                    placeholder="E-mail"
+                    required
+                    accesskey="E"
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="password"><u>P</u>assword:</label>
+                  <input
+                    type="password"
+                    class="form-control"
+                    id="password"
+                    name="password"
+                    placeholder="Password"
+                    required
+                    accesskey="P"
+                  />
+                  <div
+                    id="login-error"
+                    class="text-danger"
+                    style="visibility: hidden"
+                  >
+                    .
+                  </div>
+                </div>
+                <div class="row mt-4">
+                  <button type="submit" id="login-btn" class="btn ml-3">Log in</button>
+                  <button
+                    onclick="window.location.href='./signup'"
+                    type="button"
+                    class="btn ml-1"
+                  >
+                    Sign up
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

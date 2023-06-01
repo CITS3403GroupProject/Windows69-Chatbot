@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Windows69 Chat-Bot</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.2/css/bootstrap.min.css"
+    />
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.2/js/bootstrap.min.js"
+      integrity="sha512-tIxlE6wpN+y6U25Nf34XSmI75bA6j1x0IP/1zZfYi5a5l5C5j5QHmsyW5lVldp/ggFzD8yW6X5UOJYBU3l1qBw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.6.1/socket.io.js"
+      integrity="sha512-xbQU0+iHqhVt7VIXi6vBJKPh3IQBF5B84sSHdjKiSccyX/1ZI7Vnkt2/8y8uruj63/DVmCxfUNohPNruthTEQA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js"
+      integrity="sha512-pumBsjNRGGqkPzKHndZMaAG+bir374sORyzM3uulLV14lN5LyykqNk8eEeUlUkB3U0M4FApyaHraT65ihJhDpQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <script src="../static/Src/js/client_channel.js"></script>
+    <script src="../static/Src/js/collapse.js"></script>
+    <script src="../static/Src/js/resizeable.js"></script>
+    <script src="../static/Src/js/drag.js"></script>
+    <script src="../static/Src/js/footer.js"></script>
+    <script src="../static/Src/js/Popup.js"></script>
+    <script src="../static/Src/js/search.js"></script>
+    <link rel="stylesheet" href="../static/style.css" />
+  </head>
+  <body data-user-id="{{ user_id }}" data-username="{{ name }}">
+
+    <!-- Logo background   -->
+    <div class="backgroundImage">
+      <div class="logo_wallpaper">
+        <div>
+          <img src="../static/Src/Assets/Logo.webp" alt="wallpaper" />
+        </div>
+      </div>
+    </div>
+    <!-- Logo background   -->
+    <!-- Main Window container  -->
+    <div id="Main">
+      <div class="container" id="Windowoverlay">
+        <div class="window-popout m-3 flex mb-5" id="windows">
+          <div class="window-out flex">
+            <div class="card-header d-flex p-2" id="header">
+              Windows Chat-Bot 69
+              <div class="navbuttons">
+                <button
+                  id="toggle-button"
+                  class="btn-xs"
+                  style="margin: 5px 2px"
+                  onclick="toggleContainer()"
+                ></button>
+                <button onclick="Minimize()" class="btn-xs">-</button>
+                <button onclick="closeAPP()" class="btn-xs" id="closeButton">
+                  x
+                </button>
+              </div>
+            </div>
+            <div class="m-1">
+              <div class="container-fluid">
+                <div class="row">
+                  <div class="col-md-12">
+                    <div class="row">
+                      <div class="col-md-3" id="left-container">
+                        <div class="row">
+                          <div class="col-md-12">
+                            <div
+                              class="window-in-grey d-flex mt-2"
+                              style="align-items: center"
+                            >
+                              <img
+                                class="icon"
+                                src="../static/Src/Assets/PersonProfile.webp"
+                                alt="profile"
+                                style="width: 60px; height: 60px"
+                              />
+                              <h5 class="" style="padding: 5px; margin: 5px">
+                                Welcome <br />
+                                {{ name }}
+                                <br />
+                                {{ user_id }}
+                              </h5>
+                            </div>
+                            <div class="divider-horizontal"></div>
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="col-md-12">
+                            <button type="button" id="searchBtn" onclick="opensearchpopup()" class="btn btn-align-left" style="width: 100%">
+                              <img class="icon" src="../static/Src/Assets/OpenFile.webp" /> Search </button>
+                              <button
+                                type="button"
+                                class="btn btn-align-left"
+                                style="width: 100%"
+                                onclick="openbotpopup()"
+                              >
+                                <img
+                                  class="icon"
+                                  alt="Ai Chat"
+                                  src="../static/Src/Assets/Ai.webp"
+                                />
+                                Create New AI
+                              </button>
+                            <button class="btn btn-align-left" style="width: 100%" onclick="opensubpopup()">
+                              <img class="icon" alt="New Channel" id="new_channel" src="../static/Src/Assets/Notes.webp" />New Channel </button>
+                            <div class="divider-horizontal" style="margin: 10px 0px 10px"></div>
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="col-md-12">
+                            <div class="channel_box">
+                              <div>
+                                <div
+                                  class="card-body window-in"
+                                  style="width: 100%; height: 350px"
+                                >
+                                  <u style="width: 100%">My Chat Rooms</u>
+                                  <div id="scrollable-window">
+                                    <div id="content">
+                                      <ol id="channel_list">
+                                        <!-- example channel button: -->
+                                        <!-- <li class="channel_button">Cool Channel Name</li>  -->
+                                        <li class="channel_button">
+                                          Loading...
+                                        </li>
+                                      </ol>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                            <div
+                              class="divider-horizontal"
+                              style="margin: 10px 0px 10px"
+                            ></div>
+                            <div
+                              class="mt-2 window-in-grey"
+                              style="padding: 10px"
+                            >
+                              <!-- <input
+                                  type="number"
+                                  id="add_user"
+                                  class="form-control"
+                                  placeholder="Invite user by ID"
+                                  style="width: 100%"
+                                /> -->
+                              <button
+                                type="button"
+                                class="btn btn-wide"
+                                onclick="Viewuser()"
+                              >
+                                Users in Channel
+                              </button>
+                              <button
+                                type="button"
+                                class="btn btn-wide"
+                                onclick="Adduser()"
+                              >
+                                Add User
+                              </button>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <!--Right Column-->
+                      <div class="col-md-9" id="right-container">
+                        <div class="row">
+                          <div class="col-md-12">
+                            <div class="row">
+                              <div class="col-md-12">
+                                <div>
+                                  <div class="m-1">
+                                    <div class="header">
+                                      <div
+                                        class="d-flex justify-content-between align-items-center"
+                                      >
+                                        <h5
+                                          id="channel_header"
+                                          style="width: 100%"
+                                        >
+                                          Welcome to:
+                                        </h5>
+                                        <button
+                                          id="leave_channel"
+                                          class="btn ml-auto"
+                                          style="
+                                            width: 205px;
+                                            margin-right: 10px;
+                                          "
+                                        >
+                                          Leave Channel
+                                        </button>
+                                      </div>
+                                    </div>
+                                    <div
+                                      class="window-in form-control overflow-auto"
+                                      id="history"
+                                      style="
+                                        width: 100%;
+                                        height: 550px;
+                                        background: #fdffff;
+                                        padding-bottom: 600px;
+                                      "
+                                    >
+                                      <!-- default text -->
+                                      No messages Yet...
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="row">
+                            <div class="col-md-12">
+                              <div>
+                                <div class="m-1">
+                                  <div
+                                    class="container-fluid"
+                                    style="padding: 0px"
+                                  >
+                                    <div class="row">
+                                      <div class="col-md-9">
+                                        <textarea
+                                          id="tx_data_field"
+                                          class="form-control"
+                                          style="width: 100%; height: 65px"
+                                          placeholder="Message Channel {{ frequency }}"
+                                        ></textarea>
+                                      </div>
+                                      <div class="col-md-3">
+                                        <button
+                                          id="send_message"
+                                          class="btn ml-1 btn-wide"
+                                          style="width: 100%; height: 50px"
+                                        >
+                                          Send Message
+                                        </button>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div style="height:25px">
+
+        </div>
+      </div>
+      <!-- Main Window container  -->
+      <!-- Pop Up containers  -->
+      <div class="container">
+        <div id="overlay" class="overlay-class"></div>
+        <div id="popup" class="popup">
+          <div class="card-header"></div>
+          <div class="p-4">
+            <img
+              class="clippypop"
+              alt="Clippy"
+              src="../static/Src/Assets/Clippy.webp"
+            />
+            <h2>
+              Welcome to <br />
+              Windows69 Chat-Bot
+            </h2>
+            <p>Enjoy your stay.</p>
+            <div class="d-flex justify-content-center">
+              <button onclick="closePopup()" class="btn">Close</button>
+            </div>
+          </div>
+      </div>
+
+      <div class="container">
+        <div id="searchPopup" class="popup p-4" style="width: 500px;">
+          <img class="adduserpopup" src="../static/Src/Assets/OpenFile.webp" />
+          <h2>Search Messages</h2>
+          <input id="search-query" class="form-control" placeholder="Enter Search Text Here..." style="vertical-align: top" />
+          <div class="window-in form-control overflow-auto" 
+              id="search_results" 
+              style="
+              width: 100%;
+              height: 550px;
+              background: #fdffff;
+              padding-bottom: 600px;
+            " >
+            <!-- default text -->
+            No messages yet...
+          </div>
+          <div class="adduserpopupclose">
+          <button id="close-search-popup" onclick="closesearchpopup()">Close</button>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="container">
+        <div id="overlay" class="overlay-class"></div>
+        <div id="addchannelpopup" class="addchannelpopup">
+          <div class="card-header"></div>
+          <div class="p-4">
+            <img src="../static/Src/Assets/OpenFile.webp" alt="New Channel" />
+            <h2>Create a new channel</h2>
+            <input
+              id="channel_name"
+              class="form-control mb-3"
+              placeholder="Channel name"
+              style="vertical-align: top"
+            />
+            <button id="submit_channel" class="btn btn-wide">Submit</button>
+            <div class="adduserpopupclose">
+              <button id="closeChannelPopUp" onclick="closesubpopup()" class="btn btn-wide">
+                Cancel
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    <div class="container">
+      <div id="addbotpopup" class="addbotpopup">
+        <img class="adduserpopup" src="../static/Src/Assets/OpenFile.webp" />
+        <h2>Create A New Bot</h2>
+        <input
+          id="bot_name"
+          class="form-control"
+          placeholder="Bot Name"
+          style="vertical-align: top"
+        />
+        <input
+          id="bot_begin_prompt"
+          class="form-control"
+          placeholder="How do you want this bot to act?"
+          style="vertical-align: top; width: 600px;"
+        />
+        <button id="submit_bot" class="btn btn-wide">Submit</button>
+        <div class="adduserpopupclose">
+          <button onclick="closebotpopup()" class="btn btn-wide">Close</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+        <!-- Log out popup-->
+        <div id="shutdown" class="logout-popup">
+          <div class="card-header"></div>
+          <img
+            class="hourglass"
+            alt="Hourglass"
+            src="../static/Src/Assets/Hourglass.webp"
+          />
+          <h5>Shutting down</h5>
+          <h5>please wait ...</h5>
+        </div>
+      </div>
+
+      <!--Add user popup-->
+      <div class="container">
+        <div id="overlay" class="overlay-class"></div>
+        <div id="addUserpop" class="addUserpopclass">
+          <div class="card-header"></div>
+          <div class="p-4">
+            <h2>Add user to this channel</h2>
+            <h5>Not in channel:</h5>
+            <div
+              class="popupscrollable-div window-in-grey mb-2"
+              style="width: 100%"
+            >
+              <div id="users_not_in_channel">
+                <!-- in form -->
+              </div>
+            </div>
+            <div id="add_user_div" class="d-flex align-items"></div>
+            <button onclick="closeAdduser()" class="btn btn-wide">
+              Cancel
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!--view users popup-->
+      <div class="container">
+        <div id="overlay" class="overlay-class"></div>
+        <div id="seeusers" class="seeusersclass">
+          <div class="card-header"></div>
+          <div class="p-4">
+            <h2>View users in this channel</h2>
+            <h5>In channel:</h5>
+            <div
+              class="popupscrollable-div window-in-grey mb-2"
+              style="width: 100%"
+            >
+              <div id="users_in_channel">
+                <!-- in form -->
+              </div>
+            </div>
+            <button onclick="closeViewuser()" class="btn btn-wide">
+              Close
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+    <div class="container">
+      <div id="overlay" class="overlay-class"></div>
+      <div id="Instructions" class="Instructions">
+        <div class="card-header"></div>
+        <div class="p-4">
+          <img
+            class="clippypop"
+            alt="Clippy"
+            src="../static/Src/Assets/Clippy.webp"
+          />
+
+          <div id="scrollable-window" style="width: fit-content;">
+
+          <h2>
+            Instructions 
+          </h2>
+
+            <h2>Creating an AI Chat:</h2>
+            <ul>
+              <li>Click on the "Create AI" button.</li>
+              <li>Provide a name for your bot.</li>
+              <li>Select the purpose or goal of your bot.</li>
+              <li>Use the command "/gpt {bot_name} {message to be sent}" to invoke the bot.</li>
+              <li>Click the "Send" button to send the message.</li>
+            </ul>
+          
+            <h2>Creating a Chat:</h2>
+            <ul>
+              <li>Click on the "Chat" button.</li>
+              <li>Add a name for the chat.</li>
+              <li>Add users to the chat by clicking on "Add Users".</li>
+              <li>Select the users you want to include in the chat.</li>
+              <li>Click on "Add User to Channel" to add them to the chat.</li>
+            </ul>
+          
+            <h2>Leaving a Channel:</h2>
+            <ul>
+              <li>Click on the channel you want to leave.</li>
+              <li>Locate the "Leave Channel" button.</li>
+              <li>Click on the "Leave Channel" button to exit the channel.</li>
+            </ul>
+          
+            <h2>Searching:</h2>
+            <ul>
+              <li>Click on the "Search" button.</li>
+              <li>Input the search text in the search input field.</li>
+              <li>Press enter or click the search button to perform the search.</li>
+            </ul>
+          </div>
+
+          <div class="d-flex justify-content-center">
+            <button onclick="closeinstructions()" class="btn">Close</button>
+          </div>
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Footer container  -->
+    <div class="container-foooter">
+      <footer class="fixed-bottom window-out d-flex">
+        <button
+          class="btn"
+          id="startBtn"
+          onclick="toggleStartMenu()"
+          style="padding: 5px 10px; margin: 0px"
+        >
+          <img
+            class="icon"
+            alt="Windows Logo"
+            src="../static/Src/Assets/Windows.webp"
+            style="padding: 0px 5px 0px 0px"
+          />Start
+        </button>
+        <div class="window-out start-menu container" id="startMenu">
+          <div class="row m-0">
+            <div
+              class="col-2"
+              style="
+                width: 20px;
+                background: linear-gradient(
+                  45deg,
+                  #020024 0%,
+                  #010081 23%,
+                  #00d4ff 100%
+                );
+              "
+            ></div>
+            <div class="col-10 p-0">
+              <button
+                id="OpenAPP"
+                onclick="openAPP()"
+                class="btn btn-invis btn-align-left mt-2"
+                style="height: 55px"
+              >
+                <img
+                  class="icon"
+                  alt="Windows Logo"
+                  src="../static/Src/Assets/Windows.webp"
+                />
+                Windows69 Chat-Bot
+              </button>
+              <div class="divider-horizontal m-1"></div>
+              <button class="btn btn-invis btn-align-left m-0" style="height: 55px" onclick="openinstructions()">
+                  <img class="icon" src="../static/Src/Assets/Notes.webp" /> Instructions </button>
+              <div class="divider-horizontal m-1"></div>
+              <button
+                class="btn btn-invis btn-align-left m-0"
+                onclick="logOut()"
+              >
+                <img
+                  class="icon"
+                  alt="Monitor"
+                  style="width: 45px; height: 45px"
+                  src="../static/Src/Assets/Monitor.webp"
+                />
+                <u>L</u>og Out
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="divider-vertical"></div>
+        <button
+          id="windows69APP"
+          onclick="Minimize()"
+          class="APP-button btn btn-toggle-app"
+        >
+          <img src="../static/Src/Assets/Windows.webp" alt="Button Image" />
+          Windows69 Chat-Bot
+        </button>
+        <div style="width: 100%"></div>
+        <div class="divider-vertical"></div>
+        <div
+          class="window-in d-flex"
+          style="background-color: #c3c3c3; align-items: center; padding: 5px"
+        >
+          <img
+            class="icon"
+            alt="Speaker"
+            src="../static/Src/Assets/Speaker.webp"
+          />
+          <span id="time">00:00</span>
+        </div>
+      </footer>
+    </div>
+  </body>
+  <!-- Footer container  -->
+  <script>
+    // Make the DIV element draggable:
+    dragElement(document.getElementById("Main"));
+    var resizeable = document.querySelector(
+      'script[src="../static/Src/js/resizeable.js"]'
+    );
+
+    function dragElement(elmnt) {
+      var pos1 = 0,
+        pos2 = 0,
+        pos3 = 0,
+        pos4 = 0;
+      if (document.getElementById("header")) {
+        // If present, the header is where you move the DIV from:
+        document.getElementById("header").onmousedown = dragMouseDown;
+        document.getElementById("header").ontouchstart = dragMouseDown;
+        resizeable.disabled = !resizeable.disabled;
+      } else {
+        // Otherwise, move the DIV from anywhere inside the DIV:
+        elmnt.onmousedown = dragMouseDown;
+        elmnt.ontouchstart = dragMouseDown;
+      }
+
+      function dragMouseDown(e) {
+        e = e || window.event;
+        e.preventDefault();
+        // Get the touch or mouse cursor position at startup:
+        pos3 = e.clientX || e.touches[0].clientX;
+        pos4 = e.clientY || e.touches[0].clientY;
+        document.onmouseup = closeDragElement;
+        document.ontouchend = closeDragElement;
+        // Call a function whenever the cursor moves:
+        document.onmousemove = elementDrag;
+        document.ontouchmove = elementDrag;
+      }
+
+      function elementDrag(e) {
+        e = e || window.event;
+        e.preventDefault();
+        // Calculate the new cursor position:
+        pos1 = pos3 - (e.clientX || e.touches[0].clientX);
+        pos2 = pos4 - (e.clientY || e.touches[0].clientY);
+        pos3 = e.clientX || e.touches[0].clientX;
+        pos4 = e.clientY || e.touches[0].clientY;
+        // Set the element's new position:
+        elmnt.style.top = elmnt.offsetTop - pos2 + "px";
+        elmnt.style.left = elmnt.offsetLeft - pos1 + "px";
+      }
+
+      function closeDragElement() {
+        // Stop moving when the mouse button or touch is released:
+        document.onmouseup = null;
+        document.onmousemove = null;
+        document.ontouchend = null;
+        document.ontouchmove = null;
+      }
+    }
+  </script>
+</html>
