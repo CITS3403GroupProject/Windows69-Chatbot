@@ -17,6 +17,7 @@ Windows69 Chat-Bot aims to recreate the feeling of the late 90s Windows experien
 Windows69 Chat-Bot uses HTML, CSS, and JavaScript for the client-side interface. Server-side is handled using Flask, and integrates the ChatGPT API.
 
 ## Installation
+##### [Steps Install](https://dbprassan12.github.io/CITS3403-Agile-Web-Development-Exam/)
 
 Add the following to secret/secret.py
 
