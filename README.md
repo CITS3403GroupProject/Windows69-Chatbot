@@ -7,6 +7,11 @@ Windows69 Chat-Bot is an authentic Windows 98 style chat experience. Engage in r
 
 Windows69 Chat-Bot aims to recreate the feeling of the late 90s Windows experience. By blending state of the art modern AI chat technology with one of the most iconic vintage graphical interfaces, it aims to create a distinct, immersive, memorable experience for all.
 
+# Windows69 Chat-Bot Demo 
+
+[Demo.webm](https://github.com/CITS3403GroupProject/Windows69-Chatbot/assets/70004128/da4fde14-1f74-4733-a7ff-f946fbaa3ecb)
+
+
 ## Architecture
 
 Windows69 Chat-Bot uses HTML, CSS, and JavaScript for the client-side interface. Server-side is handled using Flask, and integrates the ChatGPT API.
